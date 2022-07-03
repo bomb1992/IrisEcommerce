@@ -1,0 +1,42 @@
+<div class="container-fluid h-custom">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-9 col-lg-6 col-xl-6 my-lg-5 py-lg-5">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+        alt="Sample image">
+    </div>
+    <div class="col-md-8 col-lg-6 col-xl-5 offset-xl-1 my-lg-5 py-lg-5">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+          <p class="lead fw-normal mb-0 me-3"> Welcome to IRIS SHOP</p>
+        </div>
+        <div class="divider d-flex align-items-center my-4">
+          <p class="text-center fw-bold mx-3 mb-0">*</p>
+        </div>
+        
+        <app-text-input formControlName = "email" [label] = "'Email Address'"></app-text-input>
+        <app-text-input formControlName = "password" [label] = "'Password'" [type]="'password'"></app-text-input>
+
+
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="form-check mb-0">
+            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3">
+            <label class="form-check-label" for="form2Example3"> Remember me </label>
+          </div>
+          <a href="#!" class="text-body">Forgot password?</a>
+        </div>
+        <div class="text-center text-lg-start mt-4 pt-2">
+          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-lg"
+            style="padding-left: 6rem; padding-right: 6rem;">Login</button>
+          <p class="fw-normal mt-2 pt-1 mb-0">Don't have an account? <a href="#!" class="link-danger">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--div class="col-4">
+    <p>Form Status: {{loginForm.status}}</p>
+    <p>Email Status : {{loginForm.get('email').status}}</p>
+    <p>Email Touched : {{loginForm.get('email').touched}}</p>
+    <p>Email Dirty : {{loginForm.get('email').dirty}}</p>
+    <pre>{{loginForm.value | json}}</pre>
+  </div-->
+</div>
