@@ -9,7 +9,7 @@ using Core.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Infrastructure.Service
+namespace Infrastructure.Services
 {
     public class TokenService : ITokenService
     {
@@ -23,14 +23,14 @@ namespace Infrastructure.Service
 
         public string CreateToken(AppUser user)
         {
-            var clainms = new List<Claim> 
+            var clainms = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.DisplayName)
             };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
-            var tokenDescriptor = new SecurityTokenDescriptor 
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(clainms),
                 Expires = DateTime.Now.AddDays(7),
@@ -40,7 +40,7 @@ namespace Infrastructure.Service
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            
+
             return tokenHandler.WriteToken(token);
         }
     }
