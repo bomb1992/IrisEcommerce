@@ -1,0 +1,13 @@
+button.nav-link {
+ background: cornsilk;
+ border-radius: 10;
+ border: none;
+
+ &:focus {
+    outline: none;
+ }
+
+ &:active:hover {
+    color: black;
+ }
+}

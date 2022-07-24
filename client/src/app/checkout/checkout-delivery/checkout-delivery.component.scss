@@ -1,0 +1,35 @@
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    padding-left: 35px; // Khoảng cách này để mình chứa style cho ô radio
+    position: relative;
+    margin: 0;
+    line-height: 20px;
+}
+
+label:before {
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    content: '';
+    background: #fff;
+    border: 1px solid black;
+}
+
+input[type="radio"]:checked ~ label:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 4px;
+    content: '';
+    background: orange;
+}
