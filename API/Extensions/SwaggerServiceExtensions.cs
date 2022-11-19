@@ -10,11 +10,11 @@ namespace API.Extensions
 {
     public static class SwaggerServiceExtensions
     {
-        public static IServiceCollection AddSwaggerDocumentation (this IServiceCollection services)
+        public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
-            services.AddSwaggerGen (c => 
+            services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo{Title = "API", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
                 var securitySchema = new OpenApiSecurityScheme
                 {
                     Description = "JWT with Bearer Schemexxxxxxxxxxxx",
@@ -22,14 +22,15 @@ namespace API.Extensions
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
                     Scheme = "bearer",
-                    Reference = new OpenApiReference 
+                    Reference = new OpenApiReference
                     {
-                        Type =  ReferenceType.SecurityScheme,
+                        Type = ReferenceType.SecurityScheme,
                         Id = "Bearer"
                     }
                 };
+
                 c.AddSecurityDefinition("Bearer", securitySchema);
-                var securityRequirement = new OpenApiSecurityRequirement {{securitySchema, new [] 
+                var securityRequirement = new OpenApiSecurityRequirement {{securitySchema, new []
                 {"Bearer"}
                 }};
 
@@ -38,7 +39,7 @@ namespace API.Extensions
             return services;
         }
 
-        public static IApplicationBuilder UseSwaggerDocumention (this IApplicationBuilder app)
+        public static IApplicationBuilder UseSwaggerDocumention(this IApplicationBuilder app)
         {
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));

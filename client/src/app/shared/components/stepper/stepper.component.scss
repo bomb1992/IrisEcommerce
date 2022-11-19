@@ -8,6 +8,14 @@ button.nav-link {
  }
 
  &:active:hover {
-    color: black;
+    color: red;
+ }
+
+ &:active{
+   outline: none;
+ }
+
+ &:disabled:not(.active){
+   color: black;
  }
 }
